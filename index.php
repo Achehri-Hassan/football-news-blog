@@ -1,5 +1,14 @@
-<!doctype html>
 
+<?php  
+
+  require "article.php";
+
+  $article = new Article();
+  $articles = $article->readAll();
+
+?>
+
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -70,20 +79,28 @@
       </section>
 
       <section class="article-card">
+
+
+       <?php  foreach ($articles as $art): ?>
+       
+         
+       
+       
+
         <div class="article">
           <p class="news">News</p>
-          <img src="./assets/Article/A1.jpeg" alt="HTML CSS Basics" />
+          <img src="./assets/Article/ <?= htmlspecialchars($art['image']) ?>" alt="HTML CSS Basics" />
 
           <div class="category">
             <p>April 10, 2026</p>
           </div>
 
           <p>
-            A complete beginner-friendly guide to JavaScript with real-world
-            examples and projects. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Tempora, illo?
+            <?= htmlspecialchars($art['content']) ?>
           </p>
         </div>
+   <?php endforeach; ?>
+
 
         <div class="article">
           <p class="news">News</p>
@@ -159,6 +176,8 @@
             adipisicing elit. Tempora, illo?
           </p>
         </div>
+
+
       </section>
 
       <section>
