@@ -6,9 +6,9 @@
     <title>Document</title>
 
     <!-- link css design -->
-     <link rel="stylesheet" href="css/variable.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/contact.css">
+     <link rel="stylesheet" href="../css/variable.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/contact.css">
 
     <!-- link icon  -->
     <link
@@ -26,7 +26,7 @@
           <nav>
             <a href="index.php">Home</a>
             <a href="#">About Us</a>
-            <a href="article.php">Article</a>
+            <a href="../user/details.php">Article</a>
           </nav>
           <button class="btn-login">Login</button>
         </div>
