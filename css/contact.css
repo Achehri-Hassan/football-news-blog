@@ -20,14 +20,10 @@
 
 
 body {
-    background: var(--bg-color);
+    background: var(--white);
 }
 
 
-
-main {
-    padding-top: 6rem;
-}
 
 .contact-container {
     display: flex;
