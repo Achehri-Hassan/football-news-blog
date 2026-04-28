@@ -1,6 +1,6 @@
 <?php
 
-require "article.php";
+require "../admin/article.php";
 
 $article = new Article();
 $articles = $article->readAll();
@@ -14,10 +14,10 @@ $articles = $article->readAll();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- link css design -->
-  <link rel="stylesheet" href="css/variable.css">
-  <link rel="stylesheet" href="/css/style.css" />
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="../css/variable.css">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
   <!-- link icon  -->
   <link
     rel="stylesheet"
@@ -60,7 +60,7 @@ $articles = $article->readAll();
 
     <section class="featured-card">
       <img
-        src="assets/Article/yamin.jpg"
+        src="../assets/Article/yamin.jpg"
         alt="Football"
         class="featured-img" />
       <div class="featured-content">
@@ -87,7 +87,7 @@ $articles = $article->readAll();
 
         <div class="article">
           <p class="news">News</p>
-          <img src="./assets/Article/<?= htmlspecialchars($art['image']) ?>" alt="">
+          <img src="../assets/Article/<?= htmlspecialchars($art['image']) ?>" alt="">
 
           <div class="category">
             <p><?= date("d-m-Y", strtotime($art["created_at"])) ?></p>
@@ -102,7 +102,7 @@ $articles = $article->readAll();
 
       <div class="article">
         <p class="news">News</p>
-        <img src="./assets/Article/A2.jpg" alt="JavaScript Guide" />
+        <img src="../assets/Article/A2.jpg" alt="JavaScript Guide" />
 
         <div class="category">
           <p>April 15, 2026</p>
@@ -117,7 +117,7 @@ $articles = $article->readAll();
 
       <div class="article">
         <p class="news">News</p>
-        <img src="./assets/Article/A3.jpg" alt="React Tutorial" />
+        <img src="../assets/Article/A3.jpg" alt="React Tutorial" />
 
         <div class="category">
           <p>April 20, 2026</p>
@@ -132,7 +132,7 @@ $articles = $article->readAll();
 
       <div class="article">
         <p class="news">News</p>
-        <img src="./assets/Article/A5.jpg" alt="React Tutorial" />
+        <img src="../assets/Article/A5.jpg" alt="React Tutorial" />
 
         <div class="category">
           <p>April 20, 2026</p>
@@ -147,7 +147,7 @@ $articles = $article->readAll();
 
       <div class="article">
         <p class="news">News</p>
-        <img src="./assets/Article/mas.jpg" alt="React Tutorial" />
+        <img src="../assets/Article/mas.jpg" alt="React Tutorial" />
 
         <div class="category">
           <p>April 20, 2026</p>
@@ -162,7 +162,7 @@ $articles = $article->readAll();
 
       <div class="article">
         <p class="news">News</p>
-        <img src="./assets/Article/raja.jpg" alt="React Tutorial" />
+        <img src="../assets/Article/raja.jpg" alt="React Tutorial" />
 
         <div class="category">
           <p>April 20, 2026</p>
@@ -213,5 +213,4 @@ $articles = $article->readAll();
     </div>
   </footer>
 </body>
-
 </html>

@@ -1,5 +1,7 @@
 <?php
 
+
+
 require_once "article.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -20,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $article = new Article();
         $article->createArticle( $title , $content , $imageName , $about_article);
 
-        header("Location: index.php");
+        header("Location: ../user/index.php");
         exit();
     }
 }
@@ -37,10 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <!-- link css style -->
 
-     <link rel="stylesheet" href="css/variable.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/contact.css">
+     <link rel="stylesheet" href="../css/variable.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/contact.css">
 
     
 </head>
@@ -68,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <main>
       <section class="contact-container">
         <div class="contact__image">
-          <img src="assets/creat-me.jpg" alt="Support" />
+          <img src="../assets/creat-me.jpg" alt="Support" />
           <h2 class="image-overlay-text">Hi There</h2>
         </div>
 

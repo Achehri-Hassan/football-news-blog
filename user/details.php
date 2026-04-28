@@ -11,10 +11,10 @@
     />
 
     <!-- link style css -->
-    <link rel="stylesheet" href="css/article.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/variable.css" />
-    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="../css/article.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/variable.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
   </head>
 
   <html>
@@ -45,7 +45,7 @@
           </div>
 
           <img
-            src="assets/Article/moro.jpg"
+            src="../assets/Article/moro.jpg"
             class="main-img"
             alt="Jakarta City"
           />
