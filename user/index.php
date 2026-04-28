@@ -87,6 +87,7 @@ $articles = $article->readAll();
 
         <div class="article">
           <p class="news">News</p>
+           
           <img src="../assets/Article/<?= htmlspecialchars($art['image']) ?>" alt="">
 
           <div class="category">
@@ -94,7 +95,7 @@ $articles = $article->readAll();
           </div>
 
           <p>
-            <?= htmlspecialchars($art['summary']) ?>
+            <?= htmlspecialchars($art['content']) ?>
           </p>
         </div>
       <?php endforeach; ?>

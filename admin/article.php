@@ -26,19 +26,18 @@ class Article
     }
 
 
-    public function createArticle($title, $content , $image , $about_articl )
+    public function createArticle($title, $content , $image)
     {
 
 
-        $sql = "INSERT into articles (title , content , image , summary) VALUES (:title , :content , :image , :summary)";
+        $sql = "INSERT into articles (title , content , image ) VALUES (:title , :content , :image)";
         $stmt = $this->conn->prepare($sql);
 
         $stmt->execute([
 
             "title" => $title,
             "content" => $content,
-            "image" => $image ,
-            "summary" => $about_articl
+            "image" => $image 
         ]);
     }
 
@@ -81,8 +80,6 @@ class Article
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
-
-
 
 
 ?>
