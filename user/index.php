@@ -1,6 +1,6 @@
 <?php
 
-require "../admin/article.php";
+require "../classes/article.php";
 
 $article = new Article();
 $articles = $article->readAll();
@@ -38,7 +38,7 @@ $articles = $article->readAll();
           <a href="details.php">Article</a>
           <a href="contact.php">Contact</a>
         </nav>
-        <button class="btn-login">Login</button>
+        <a href="login.php"> <button class="btn-login">Login</button></a>
       </div>
     </div>
   </header>

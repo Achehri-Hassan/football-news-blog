@@ -2,7 +2,7 @@
 
 
 
-require_once "article.php";
+require_once "../classes/article.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $imageName = $_FILES['image']['name'];
     $tmpName = $_FILES['image']['tmp_name'];
 
-    $path = "assets/Article/" . $imageName;
+    $path = "../assets/Article/" . $imageName;
 
     move_uploaded_file($tmpName, $path);
 
