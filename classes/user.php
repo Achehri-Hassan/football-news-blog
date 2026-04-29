@@ -1,8 +1,6 @@
-
-
 <?php
 
-require_once "config/connection.php";
+require_once "connection.php";
 
 class User
 {
@@ -15,25 +13,38 @@ class User
     }
 
     // Register new user
-    public function create($name, $email, $password, $role = "user")
+    public function create($name, $email, $password, $role)
     {
         $sql = "INSERT INTO users 
-                (name_user, email_user, password_user, role) 
+                (username, email, password, role) 
                 VALUES 
-                (:name, :email, :password, :role)";
+                (:username, :email, :password, :role)";
 
         $stmt = $this->conn->prepare($sql);
 
         return $stmt->execute([
-            "name" => $name,
+            "username" => $name,
             "email" => $email,
             "password" => $password,
             "role" => $role
         ]);
     }
 
+    // Login user (IMPORTANT)
+    public function login($email)
+    {
+        $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
 
-    // Get all users (optional for admin)
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->execute([
+            "email" => $email
+        ]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    // Get all users
     public function all()
     {
         $sql = "SELECT * FROM users ORDER BY id_user DESC";
@@ -44,5 +55,3 @@ class User
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
-
-?>

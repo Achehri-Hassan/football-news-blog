@@ -1,82 +1,60 @@
-<?php
-
-  
-
-require_once "config/connection.php";
-require_once "classes/user.php";
-
-$message = "";
-$messageType = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
-
-
-    $userClass = new User();
-
-
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-    $result = $userClass->create($name, $email, $hashed_password);
-
-    if ($result) {
-        $message = "Account created successfully! You can login now.";
-        $messageType = "success";
-    } else {
-        $message = "Error: Could not create account (Email might already exist).";
-        $messageType = "error";
-    }
-}
-?>
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Create Account</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+    <!-- link css design -->
+     <link rel="stylesheet" href="../css/variable.css">
+    <link rel="stylesheet" href="../css/contact.css">
 
-<body>
+    <!-- link icon  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
 
-    <div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
-        <h2>Register</h2>
+  <style>
+      .login{
+         margin-top: 70px;
+      }
+  </style>
+  <body>
+ 
 
-        <?php if ($message): ?>
-            <p style="color: <?php echo $messageType == 'success' ? 'green' : 'red'; ?>;">
-                <?php echo $message; ?>
-            </p>
-        <?php endif; ?>
+    <main>
+      <section class="contact-container">
+        <div class="contact__image">
+          <img src="bhg.jpg" alt="Support" />
+          <h2 class="image-overlay-text">Hi There</h2>
+        </div>
 
-        <form action="" method="POST">
-            <div style="margin-bottom: 15px;">
-                <label>Full Name:</label><br>
-                <input type="text" name="name" required style="width: 100%; padding: 8px;">
+        <div class="contact__form-section login">
+          <div class="form__header">
+            <h2 class="form__title">Login</h2>
+          </div>
+
+        
+            <div class="form__group">
+              <label>Email</label>
+              <input type="email" placeholder="Enter your email" />
             </div>
 
-            <div style="margin-bottom: 15px;">
-                <label>Email:</label><br>
-                <input type="email" name="email" required style="width: 100%; padding: 8px;">
+              <div class="form__group">
+              <label>Password</label>
+              <input type="password" placeholder="Enter your name" />
             </div>
 
-            <div style="margin-bottom: 15px;">
-                <label>Password:</label><br>
-                <input type="password" name="password" required style="width: 100%; padding: 8px;">
-            </div>
+           
 
-            <button type="submit" name="register" style="width: 100%; padding: 10px; background: #28a745; color: white; border: none; cursor: pointer;">
-                login
-            </button>
-        </form>
+            <button type="submit" class="form__button">Submit</button>
+          </form>
 
-        <p style="margin-top: 15px;">Already have an account? <a href="login.php">Login here</a></p>
-    </div>
-
-</body>
-
+          <a href="Register.php">Register</a>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>

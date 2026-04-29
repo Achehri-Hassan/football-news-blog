@@ -1,6 +1,8 @@
 <?php
 
-require "../classes/article.php";
+
+session_start();
+require "classes/article.php";
 
 $article = new Article();
 $articles = $article->readAll();
@@ -45,6 +47,17 @@ $articles = $article->readAll();
 
   <!-- main content -->
   <main>
+    <h1>
+    Hello Mr
+    <?php
+        if (isset($_SESSION["user"])) {
+            echo htmlspecialchars($_SESSION["user"]);
+        } else {
+            echo "Guest";
+        }
+    ?>
+</h1>
+
     <section class="hero-section">
       <h1>Blog & articles</h1>
 
@@ -87,7 +100,7 @@ $articles = $article->readAll();
 
         <div class="article">
           <p class="news">News</p>
-           
+
           <img src="../assets/Article/<?= htmlspecialchars($art['image']) ?>" alt="">
 
           <div class="category">
@@ -214,4 +227,5 @@ $articles = $article->readAll();
     </div>
   </footer>
 </body>
+
 </html>
