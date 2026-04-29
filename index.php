@@ -41,6 +41,7 @@ $articles = $article->readAll();
           <a href="contact.php">Contact</a>
         </nav>
         <a href="login.php"> <button class="btn-login">Login</button></a>
+        <a href="login.php"><button class="btn-login">Logout</button></a>
       </div>
     </div>
   </header>
@@ -48,7 +49,7 @@ $articles = $article->readAll();
   <!-- main content -->
   <main>
     <h1>
-    Hello Mr
+    Welcome Mr
     <?php
         if (isset($_SESSION["user"])) {
             echo htmlspecialchars($_SESSION["user"]);

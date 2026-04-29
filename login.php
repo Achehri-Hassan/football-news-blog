@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
 
       <!-- LOGIN FORM -->
-      <form class="form__body" method="post" action="login.php">
+      <form class="form__body" method="post" action="login.php" style="margin-top: 70px;">
 
         <div class="form__group">
           <label>Email</label>
