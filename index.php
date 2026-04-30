@@ -2,12 +2,30 @@
 
 
 session_start();
-require "classes/article.php";
+require "article.php";
 
 $article = new Article();
 $articles = $article->readAll();
 
+
+if (!isset($_SESSION["user"])) {
+  header("Location: login.php");
+  exit();
+}
+
+
+
+$article = new Article();
+$articles = $article->readAll();
+
+
 ?>
+
+
+
+
+
+
 
 <!doctype html>
 <html lang="en">
@@ -37,11 +55,16 @@ $articles = $article->readAll();
         <nav>
           <a href="#">Home</a>
           <a href="#">About Us</a>
-          <a href="details.php">Article</a>
+          <a href="create.php">create</a>
           <a href="contact.php">Contact</a>
         </nav>
-        <a href="login.php"> <button class="btn-login">Login</button></a>
-        <a href="login.php"><button class="btn-login">Logout</button></a>
+      
+         
+        <a href="logout.php"><button class="btn-login">Logout</button></a>
+        
+
+
+        
       </div>
     </div>
   </header>
@@ -49,15 +72,15 @@ $articles = $article->readAll();
   <!-- main content -->
   <main>
     <h1>
-    Welcome Mr
-    <?php
-        if (isset($_SESSION["user"])) {
-            echo htmlspecialchars($_SESSION["user"]);
-        } else {
-            echo "Guest";
-        }
-    ?>
-</h1>
+      Welcome Mr
+      <?php
+      if (isset($_SESSION["user"])) {
+        echo htmlspecialchars($_SESSION["user"]);
+      } else {
+        echo "";
+      }
+      ?>
+    </h1>
 
     <section class="hero-section">
       <h1>Blog & articles</h1>
@@ -74,7 +97,7 @@ $articles = $article->readAll();
 
     <section class="featured-card">
       <img
-        src="../assets/Article/yamin.jpg"
+        src="Article_imag/yamin.jpg"
         alt="Football"
         class="featured-img" />
       <div class="featured-content">
@@ -94,30 +117,29 @@ $articles = $article->readAll();
 
 
       <?php foreach ($articles as $art): ?>
-
-
-
-
-
+         
+        <a href="details.php?id=<?= $art['id'] ?>">
         <div class="article">
           <p class="news">News</p>
 
-          <img src="../assets/Article/<?= htmlspecialchars($art['image']) ?>" alt="">
+          <img src="Article_imag/<?= htmlspecialchars($art['image']) ?>" alt="">
 
           <div class="category">
             <p><?= date("d-m-Y", strtotime($art["created_at"])) ?></p>
           </div>
 
           <p>
-            <?= htmlspecialchars($art['content']) ?>
+            <?= htmlspecialchars(mb_strimwidth($art['content'], 0, 160, "...")) ?>
           </p>
         </div>
+        </a>
+
       <?php endforeach; ?>
 
 
       <div class="article">
         <p class="news">News</p>
-        <img src="../assets/Article/A2.jpg" alt="JavaScript Guide" />
+        <img src="Article_imag/A2.jpg" alt="JavaScript Guide" />
 
         <div class="category">
           <p>April 15, 2026</p>
@@ -132,7 +154,7 @@ $articles = $article->readAll();
 
       <div class="article">
         <p class="news">News</p>
-        <img src="../assets/Article/A3.jpg" alt="React Tutorial" />
+        <img src="Article_imag/A3.jpg" alt="React Tutorial" />
 
         <div class="category">
           <p>April 20, 2026</p>
@@ -147,7 +169,7 @@ $articles = $article->readAll();
 
       <div class="article">
         <p class="news">News</p>
-        <img src="../assets/Article/A5.jpg" alt="React Tutorial" />
+        <img src="Article_imag/A5.jpg" alt="React Tutorial" />
 
         <div class="category">
           <p>April 20, 2026</p>
@@ -162,7 +184,7 @@ $articles = $article->readAll();
 
       <div class="article">
         <p class="news">News</p>
-        <img src="../assets/Article/mas.jpg" alt="React Tutorial" />
+        <img src="Article_imag/mas.jpg" alt="React Tutorial" />
 
         <div class="category">
           <p>April 20, 2026</p>
@@ -177,7 +199,7 @@ $articles = $article->readAll();
 
       <div class="article">
         <p class="news">News</p>
-        <img src="../assets/Article/raja.jpg" alt="React Tutorial" />
+        <img src="Article_imag/raja.jpg" alt="React Tutorial" />
 
         <div class="category">
           <p>April 20, 2026</p>
@@ -230,3 +252,6 @@ $articles = $article->readAll();
 </body>
 
 </html>
+
+
+

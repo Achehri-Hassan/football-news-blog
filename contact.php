@@ -26,9 +26,8 @@
           <nav>
             <a href="index.php">Home</a>
             <a href="#">About Us</a>
-            <a href="../user/details.php">Article</a>
+            <a href="details.php">Article</a>
           </nav>
-          <button class="btn-login">Login</button>
         </div>
       </div>
     </header>
@@ -36,7 +35,7 @@
     <main>
       <section class="contact-container">
         <div class="contact__image">
-          <img src="/assets/pexels-mikhail-nilov-7988201 1.jpg" alt="Support" />
+          <img src="Article_imag/lionel.jpg" alt="Support" />
           <h2 class="image-overlay-text">Hi There</h2>
         </div>
 

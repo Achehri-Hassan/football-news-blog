@@ -13,27 +13,26 @@ class User
     }
 
     // Register new user
-    public function create($name, $email, $password, $role)
+    public function create($name, $email, $password)
     {
-        $sql = "INSERT INTO users 
-                (username, email, password, role) 
+        $sql = "INSERT INTO user
+                (name, email, password_user) 
                 VALUES 
-                (:username, :email, :password, :role)";
+                (:name, :email, :password_user)";
 
         $stmt = $this->conn->prepare($sql);
 
         return $stmt->execute([
-            "username" => $name,
+            "name" => $name,
             "email" => $email,
-            "password" => $password,
-            "role" => $role
+            "password_user" => $password
         ]);
     }
 
     // Login user (IMPORTANT)
     public function login($email)
     {
-        $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
+        $sql = "SELECT * FROM user WHERE email = :email LIMIT 1";
 
         $stmt = $this->conn->prepare($sql);
 
@@ -45,9 +44,9 @@ class User
     }
 
     // Get all users
-    public function all()
+     public function all()
     {
-        $sql = "SELECT * FROM users ORDER BY id_user DESC";
+        $sql = "SELECT * FROM user ORDER BY id_user DESC";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();

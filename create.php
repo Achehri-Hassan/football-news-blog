@@ -2,7 +2,7 @@
 
 
 
-require_once "../classes/article.php";
+require_once "article.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -10,18 +10,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $title = $_POST['title'];
     $content = $_POST['content'];
+    $author = $_POST["autour"];
 
     $imageName = $_FILES['image']['name'];
     $tmpName = $_FILES['image']['tmp_name'];
 
-    $path = "../assets/Article/" . $imageName;
+    $path = "Article_imag/" . $imageName;
 
     move_uploaded_file($tmpName, $path);
 
     $article = new Article();
-    $article->createArticle($title, $content, $imageName);
+    $article->createArticle($title, $content, $imageName , $author);
 
-    header("Location: ../user/index.php");
+    header("Location: index.php");
     exit();
   }
 }
@@ -39,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <!-- link css style -->
 
   <link rel="stylesheet" href="../css/variable.css">
-  <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/contact.css">
 
 
@@ -48,22 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
 
 
-  <!-- ----HEADER--- -->
-  <header>
-    <div class="head">
-      <a href="#" class="logo"><i class="fa-brands fa-readme"></i></a>
-
-      <div>
-        <nav>
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="article.php">Article</a>
-          <a href="contact.php">Contact</a>
-        </nav>
-        <button class="btn-login">Login</button>
-      </div>
-    </div>
-  </header>
 
   <main>
 
@@ -81,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <form class="form__body" method="post" enctype="multipart/form-data">
           <div class="form__group">
             <label>Title </label>
-            <input type="text" placeholder="Enter your name" name="title" />
+            <input type="text" placeholder="Enter your name" name="title" required/>
           </div>
 
           <div class="form__group">
@@ -91,12 +75,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
           <div class="form__group">
             <label>Author</label>
-            <input type="text" placeholder="author" />
+            <input type="text" placeholder="author" name="autour" required/>
           </div>
 
           <div class="form__group">
             <label>Content</label>
-            <textarea placeholder="How can we help?" name="content"></textarea>
+            <textarea placeholder="How can we help?" name="content" required></textarea>
           </div>
 
 

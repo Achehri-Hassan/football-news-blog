@@ -1,49 +1,9 @@
 
 
-<!-- // require_once "classes/user.php";
-
-// $Users = new User();
-
-
-
-// if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-//   if (isset($_POST["Register"])) {
-
-//     $title =  trim($_POST["title"]);
-//     $email = trim($_POST["email"]);
-//     $password = trim($_POST["password"]);
-
-//     if (isset($_SESSION["user"])) {
-//       $title = $_SESSION["user"];
-//     }
-
-
-//     if (isset($_SESSION["email"])) {
-//       $email = $_SESSION["email"];
-//     }
-
-
-//     if (isset($_SESSION["password"])) {
-//       $password = $_SESSION["password"];
-//     }
-
-
-
-    
-//   }
-
-
-
-// }
-
-// ?> -->
-
-
-<?php
+<?php 
 
 session_start();
-require_once "classes/user.php";
+require_once "user.php";
 
 $Users = new User();
 
@@ -54,20 +14,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $name = trim($_POST["name"]);
         $email = trim($_POST["email"]);
         $password = trim($_POST["password"]);
-        $role = "user";
-
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         if (!empty($name) && !empty($email) && !empty($password)) {
 
-            $result = $Users->create($name, $email, $hashedPassword, $role);
+            $result = $Users->create($name, $email, $hashedPassword);
 
             if ($result) {
 
                 
                 $_SESSION["user"] = $name;
                 $_SESSION["email"] = $email;
-                $_SESSION["role"] = $role;
 
                 header("Location: index.php");
                 exit();
@@ -101,11 +58,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <body>
 
-
   <main>
     <section class="contact-container">
       <div class="contact__image">
-        <img src="bhg.jpg" alt="Support" />
+        <img src="Article_imag/lionel.jpg" alt="Support" />
         <h2 class="image-overlay-text">Hi There</h2>
       </div>
 
@@ -118,17 +74,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
           <div class="form__group">
             <label>Full name</label>
-            <input type="text" placeholder="Enter your name" name="name"/>
+            <input type="text" placeholder="Enter your name" name="name" required/>
           </div>
 
           <div class="form__group">
             <label>Email</label>
-            <input type="email" placeholder="Enter your email" name="email" />
+            <input type="email" placeholder="Enter your email" name="email"  required/>
           </div>
 
           <div class="form__group">
             <label>Password</label>
-            <input type="password" placeholder="Enter your name"  name="password"/>
+            <input type="password" placeholder="Enter your name"  name="password" required/>
           </div>
 
 

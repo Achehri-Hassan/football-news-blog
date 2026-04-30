@@ -26,18 +26,19 @@ class Article
     }
 
 
-    public function createArticle($title, $content , $image)
+    public function createArticle($title, $content , $image , $author)
     {
 
 
-        $sql = "INSERT into articles (title , content , image ) VALUES (:title , :content , :image)";
+        $sql = "INSERT into articles (title , content , image  , author) VALUES (:title , :content , :image , :author)";
         $stmt = $this->conn->prepare($sql);
 
         $stmt->execute([
 
             "title" => $title,
             "content" => $content,
-            "image" => $image 
+            "image" => $image,
+             "author" => $author
         ]);
     }
 

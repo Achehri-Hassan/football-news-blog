@@ -1,3 +1,20 @@
+
+<?php  
+
+   require_once "article.php";
+
+   if(!isset($_GET["id"])){
+       echo "Article Not found";
+       exit();
+   }
+
+   $id = $_GET['id'];
+   
+   $article = new Article();
+   $art = $article->getById($id);
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -30,44 +47,41 @@
               <a href="#">About Us</a>
               <a href="contact.php">Contact</a>
             </nav>
-            <button class="btn-login">Login</button>
           </div>
         </div>
       </header>
 
       <main class="container">
         <section class="article-main">
-          <h1>Indonesia to Host ASEAN Climate Summit 2025</h1>
+          <h1><?= htmlspecialchars($art['title']) ?></h1>
 
           <div class="author-meta">
             <img src="https://i.pravatar.cc/100" alt="Author" />
-            <span>Rina Wulandari • Politics • June 24, 2025</span>
+            <span> <?= htmlspecialchars($art['author'])  ?>  <?= date("d-m-Y", strtotime($art["created_at"])) ?> </span>
           </div>
 
           <img
-            src="../assets/Article/moro.jpg"
+            src="Article_imag/<?= htmlspecialchars($art['image']) ?>"
             class="main-img"
             alt="Jakarta City"
           />
 
           <div class="article-content">
-            <h2>Jakarta, Indonesia -</h2>
+            <h2>Read Article -</h2>
             <p>
-              Indonesia has officially been selected as the host country for the
-              ASEAN Climate Summit 2025, marking a historic milestone in the
-              nation's diplomatic and environmental efforts.
+              <?= htmlspecialchars($art['content']) ?>
             </p>
-            <p>
+            <!-- <p>
               The announcement was made during the ASEAN Ministerial Meeting
               held in Kuala Lumpur last weekend. Indonesia's proposal stood out
               for its ambitious commitment to renewable energy.
-            </p>
+            </p> -->
 
-            <h2>A Regional Focus on Climate Action</h2>
+            <!-- <h2>A Regional Focus on Climate Action</h2>
             <p>
               The summit scheduled for November 2025 will bring together leaders
               and environmental ministers from all 10 ASEAN member states.
-            </p>
+            </p> -->
           </div>
 
           <div class="post-footer-stats">
