@@ -48,7 +48,7 @@ A simple PHP & MySQL blog application for publishing football news articles.
 1. Clone the repository:
 
 ```
-git clone https://github.com/your-username/football-news-blog.git
+https://github.com/Achehri-Hassan/football-news-blog.git
 ```
 
 2. Move the project to your server (XAMPP / WAMP)
